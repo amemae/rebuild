@@ -12,7 +12,6 @@ public class Player : MonoBehaviour
         oldPos = transform.position;
         if (Input.GetAxisRaw("Horizontal") < 0)
         {
-            Debug.Log("Read right arrow");
             transform.Translate(Vector2.left * speed * Time.deltaTime);
         }
         
