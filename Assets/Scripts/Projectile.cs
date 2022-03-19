@@ -14,6 +14,10 @@ public class Projectile : MonoBehaviour
         if (_isActive)
         {
             transform.position = Vector2.MoveTowards(transform.position, _targetPos, _speed * Time.deltaTime);
+            if (transform.position.x == _targetPos.x && transform.position.y == _targetPos.y)
+            {
+                _isActive = false;
+            }
         }
     }
 
