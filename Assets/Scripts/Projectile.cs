@@ -27,7 +27,7 @@ public class Projectile : MonoBehaviour
 
     }
 
-    public void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         _isActive = false;
         transform.position = new Vector2(-100, -100);
