@@ -8,6 +8,11 @@ public class Projectile : MonoBehaviour
     public float _speed = 5;
 
     private Vector2 _targetPos;
+    private CircleCollider2D _collider;
+    private void Awake()
+    {
+        _collider = GetComponent<CircleCollider2D>();
+    }
 
     void Update()
     {
@@ -19,9 +24,17 @@ public class Projectile : MonoBehaviour
                 _isActive = false;
             }
         }
+
     }
 
-   public void Activate()
+    public void OnTriggerEnter2D(Collider2D other)
+    {
+        _isActive = false;
+        transform.position = new Vector2(-100, -100);
+
+    }
+
+    public void Activate()
     {
         _isActive = true;
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
