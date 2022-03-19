@@ -5,7 +5,13 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     private bool _isActive = false;
-    public float _speed = 5;
+    public float _speed;
+    public int _dmg;
+
+    public int Damage
+    {
+        get { return _dmg; }
+    }
 
     private Vector2 _targetPos;
     private CircleCollider2D _collider;
