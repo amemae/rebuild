@@ -45,15 +45,7 @@ public class Player : MonoBehaviour
         {
             //Move the projectile onto the player
             proj.transform.position = new Vector2(transform.position.x, transform.position.y);
-            proj.IsActive = true;
-            //Attack();
+            proj.Activate();
         }
-    }
-
-    private void Attack()
-    {
-        /*Vector2 mousePos = Input.mousePosition;
-        //Converts the players position into pixel units so it can be compared against mousePosition
-        Vector2 playerPixelPos = Camera.main.WorldToScreenPoint(transform.position);*/
     }
 }

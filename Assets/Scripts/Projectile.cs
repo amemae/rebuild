@@ -5,24 +5,24 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     private bool _isActive = false;
-    public float speed = 5;
+    public float _speed = 5;
+
+    private Vector2 _targetPos;
 
     void Update()
     {
         if (_isActive)
         {
-            transform.Translate(Vector2.right * speed * Time.deltaTime);
-            //Sample code to deactive projectile when the player cannot see it
-            if (transform.position.x > 100 || transform.position.y > 100 || transform.position.x < -100 || 
-                transform.position.y < -100)
-            {
-                _isActive = false;
-            }
+            transform.position = Vector2.MoveTowards(transform.position, _targetPos, _speed * Time.deltaTime);
         }
     }
 
-   public bool IsActive
+   public void Activate()
     {
-        set { _isActive = value; }
+        _isActive = true;
+        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        //Find the slope of the line between player and mouse position than scale the line so it continues past cursor
+        _targetPos.x = (mousePos.x - transform.position.x) * 100;
+        _targetPos.y = (mousePos.y - transform.position.y) * 100;
     }
 }
