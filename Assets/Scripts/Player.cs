@@ -2,10 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : Actor
 {
-    Vector2 oldPos, newPos;
-    public float speed = 5;
     public Projectile prefabProj;
     private Projectile proj;
 
@@ -18,25 +16,25 @@ public class Player : MonoBehaviour
     private void Update()
     {
         //Movement
-        oldPos = transform.position;
+        _oldPos = transform.position;
         if (Input.GetAxisRaw("Horizontal") < 0)
         {
-            transform.Translate(Vector2.left * speed * Time.deltaTime);
+            transform.Translate(Vector2.left * _speed * Time.deltaTime);
         }
         
         if (Input.GetAxisRaw("Horizontal") > 0)
         {
-            transform.Translate(Vector2.right * speed * Time.deltaTime);
+            transform.Translate(Vector2.right * _speed * Time.deltaTime);
         }
 
         if (Input.GetAxisRaw("Vertical") > 0)
         {
-            transform.Translate(Vector2.up * speed * Time.deltaTime);
+            transform.Translate(Vector2.up * _speed * Time.deltaTime);
         }
 
         if (Input.GetAxisRaw("Vertical") < 0)
         {
-            transform.Translate(Vector2.down * speed * Time.deltaTime);
+            transform.Translate(Vector2.down * _speed * Time.deltaTime);
         }
 
         //Attacking
