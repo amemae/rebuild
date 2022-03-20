@@ -50,4 +50,27 @@ public abstract class Actor : MonoBehaviour
         inactiveProj.transform.position = new Vector2(transform.position.x, transform.position.y);
         inactiveProj.Activate();
     }
+
+    protected virtual void OnTriggerEnter2D(Collider2D other)
+    {
+        Projectile otherProj = other.GetComponent<Projectile>();
+        if (TakeDamage(otherProj))
+        {
+            _hp -= otherProj.Damage;
+
+            if (_hp <= 0)
+            {
+                DestroyActor();
+            }
+
+            otherProj.Deactivate();
+        }
+    }
+
+    protected abstract bool TakeDamage(Projectile otherProj);
+
+    protected virtual void DestroyActor()
+    {
+        Destroy(gameObject);
+    }
 }

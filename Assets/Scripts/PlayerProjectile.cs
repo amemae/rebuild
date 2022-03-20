@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class PlayerProjectile : Projectile
 {
+    public override bool IsPlayerProjectile
+    {
+        get { return true; }
+    }
+
     public override void Activate()
     {
         base.Activate();

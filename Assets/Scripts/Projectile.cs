@@ -20,6 +20,10 @@ public abstract class Projectile : MonoBehaviour
         get { return _dmg; }
     }
 
+    public virtual bool IsPlayerProjectile
+    {
+        get { return false; }
+    }
     private void Awake()
     {
         _collider = GetComponent<CircleCollider2D>();
@@ -40,15 +44,14 @@ public abstract class Projectile : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        _isActive = false;
-        transform.position = GameManager.Instance.InstantiatePosition;
-
-    }
-
     public virtual void Activate()
     {
         _isActive = true;
+    }
+
+    public virtual void Deactivate()
+    {
+        _isActive = false;
+        transform.position = GameManager.Instance.InstantiatePosition;
     }
 }

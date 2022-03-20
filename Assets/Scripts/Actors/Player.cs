@@ -36,4 +36,13 @@ public class Player : Actor
             ShootProjectile();
         }
     }
+
+    protected override bool TakeDamage(Projectile otherProj)
+    {
+        if (!otherProj.IsPlayerProjectile)
+        {
+            return true;
+        }
+        return false;
+    }
 }
