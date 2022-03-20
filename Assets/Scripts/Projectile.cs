@@ -23,7 +23,7 @@ public abstract class Projectile : MonoBehaviour
     private void Awake()
     {
         _collider = GetComponent<CircleCollider2D>();
-        GetComponent<Rigidbody2D>().gravityScale = 0;
+        GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
         
     }
 
