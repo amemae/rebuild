@@ -4,16 +4,13 @@ using UnityEngine;
 
 public class Enemangle : Actor
 {
-    private void Update()
+    private void OnTriggerEnter2D(Collider2D other)
     {
+        _hp -= other.GetComponent<Projectile>().Damage;
+
         if (_hp <= 0)
         {
             Destroy(gameObject);
         }
-    }
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        _hp -= other.GetComponent<Projectile>().Damage;
-        Debug.Log("Remaining HP: " + _hp);
     }
 }
