@@ -10,7 +10,7 @@ public class Player : Actor
     private void Start()
     {
         //Make starting position a global variable
-        proj = Instantiate(prefabProj, new Vector2(-1000, -1000), Quaternion.identity);
+        proj = Instantiate(prefabProj, GameManager.InstantiatePosition, Quaternion.identity);
     }
 
     private void Update()
