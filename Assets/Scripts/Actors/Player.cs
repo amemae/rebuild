@@ -30,18 +30,10 @@ public class Player : Actor
         }
 
         //Attacking
-        //0 here represents primary mouse button
+        //0 represents primary mouse button
         if (Input.GetMouseButtonDown(0))
         {
-            //Find an inactive projectile to use, if that can't be found make new ones
-            Projectile nextProj = _projs.Where(p => !p.IsActive).FirstOrDefault();
-            if (nextProj == null)
-            {
-                nextProj = NewProj();
-            }
-            //Move the projectile onto the player
-            nextProj.transform.position = new Vector2(transform.position.x, transform.position.y);
-            nextProj.Activate();
+            ShootProjectile();
         }
     }
 }

@@ -95,5 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 879c8ea9f219fa347a457fc3eba022c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  prefabProj: {fileID: 0}
+  _speed: 5
+  _hp: 5
+  _prefabProj: {fileID: 5229658751319772748, guid: e145e534d3a864246a227f0b524541bf, type: 3}
+  _numOfStartingProjs: 5

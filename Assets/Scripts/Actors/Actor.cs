@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public abstract class Actor : MonoBehaviour
 {
@@ -33,5 +34,19 @@ public abstract class Actor : MonoBehaviour
         Projectile newProj = Instantiate(_prefabProj, GameManager.Instance.InstantiatePosition, Quaternion.identity);
         _projs.Add(newProj);
         return newProj;
+    }
+
+    //Find an inactive projectile and move it to the actor's position before firing it
+    protected virtual void ShootProjectile()
+    {
+        Projectile inactiveProj = _projs.Where(p => !p.IsActive).FirstOrDefault();
+        if (inactiveProj == null)
+        {
+            inactiveProj = Instantiate(_prefabProj, GameManager.Instance.InstantiatePosition, Quaternion.identity);
+            _projs.Add(inactiveProj);
+        }
+
+        inactiveProj.transform.position = new Vector2(transform.position.x, transform.position.y);
+        inactiveProj.Activate();
     }
 }

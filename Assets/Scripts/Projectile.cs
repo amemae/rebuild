@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Projectile : MonoBehaviour
+public abstract class Projectile : MonoBehaviour
 {
     private bool _isActive = false;
     public float _speed;
     public int _dmg;
-    private Vector2 _targetPos;
-    private CircleCollider2D _collider;
+    protected Vector2 _targetPos;
+    protected CircleCollider2D _collider;
 
     public bool IsActive
     {
@@ -43,16 +43,12 @@ public class Projectile : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         _isActive = false;
-        transform.position = GameManager.InstantiatePosition;
+        transform.position = GameManager.Instance.InstantiatePosition;
 
     }
 
-    public void Activate()
+    public virtual void Activate()
     {
         _isActive = true;
-        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        //Find the slope of the line between player and mouse position than scale the line so it continues past cursor
-        _targetPos.x = (mousePos.x - transform.position.x) * 100;
-        _targetPos.y = (mousePos.y - transform.position.y) * 100;
     }
 }
