@@ -7,6 +7,8 @@ public class Projectile : MonoBehaviour
     private bool _isActive = false;
     public float _speed;
     public int _dmg;
+    private Vector2 _targetPos;
+    private CircleCollider2D _collider;
 
     public bool IsActive
     {
@@ -18,11 +20,11 @@ public class Projectile : MonoBehaviour
         get { return _dmg; }
     }
 
-    private Vector2 _targetPos;
-    private CircleCollider2D _collider;
     private void Awake()
     {
         _collider = GetComponent<CircleCollider2D>();
+        GetComponent<Rigidbody2D>().gravityScale = 0;
+        
     }
 
     void Update()
