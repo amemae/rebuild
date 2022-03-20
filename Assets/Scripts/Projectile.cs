@@ -8,6 +8,11 @@ public class Projectile : MonoBehaviour
     public float _speed;
     public int _dmg;
 
+    public bool IsActive
+    {
+        get { return _isActive; }
+    }
+
     public int Damage
     {
         get { return _dmg; }

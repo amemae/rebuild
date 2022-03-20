@@ -1,18 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class Player : Actor
 {
-    public Projectile prefabProj;
-    private Projectile proj;
-
-    private void Start()
-    {
-        //Make starting position a global variable
-        proj = Instantiate(prefabProj, GameManager.InstantiatePosition, Quaternion.identity);
-    }
-
     private void Update()
     {
         //Movement
@@ -41,9 +33,15 @@ public class Player : Actor
         //0 here represents primary mouse button
         if (Input.GetMouseButtonDown(0))
         {
+            //Find an inactive projectile to use, if that can't be found make new ones
+            Projectile nextProj = _projs.Where(p => !p.IsActive).FirstOrDefault();
+            if (nextProj == null)
+            {
+                nextProj = NewProj();
+            }
             //Move the projectile onto the player
-            proj.transform.position = new Vector2(transform.position.x, transform.position.y);
-            proj.Activate();
+            nextProj.transform.position = new Vector2(transform.position.x, transform.position.y);
+            nextProj.Activate();
         }
     }
 }
