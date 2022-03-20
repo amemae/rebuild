@@ -5,9 +5,9 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     private static GameManager _instance;
-    public static Vector2 _instantiatePosition = new Vector2(-1000, -1000);
+    public Vector2 _instantiatePosition = new Vector2(-1000, -1000);
 
-    public static Vector2 InstantiatePosition
+    public Vector2 InstantiatePosition
     {
         get { return _instantiatePosition; }
     }

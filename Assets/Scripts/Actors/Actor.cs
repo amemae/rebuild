@@ -23,14 +23,14 @@ public abstract class Actor : MonoBehaviour
             _projs = new List<Projectile>();
             for (int p = 0; p < _numOfStartingProjs; ++p)
             {
-                _projs.Add(Instantiate(_prefabProj, GameManager.InstantiatePosition, Quaternion.identity));
+                _projs.Add(Instantiate(_prefabProj, GameManager.Instance.InstantiatePosition, Quaternion.identity));
             }
         }
     }
 
     protected virtual Projectile NewProj()
     {
-        Projectile newProj = Instantiate(_prefabProj, GameManager.InstantiatePosition, Quaternion.identity);
+        Projectile newProj = Instantiate(_prefabProj, GameManager.Instance.InstantiatePosition, Quaternion.identity);
         _projs.Add(newProj);
         return newProj;
     }
