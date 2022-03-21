@@ -4,5 +4,8 @@ using UnityEngine;
 
 public class Enemangle : Enemy
 {
-
+    protected override Projectile GenerateProjectilePrefab()
+    {
+        return PrefabGenerator.Instance.EnemyProjectile;
+    }
 }

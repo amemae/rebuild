@@ -37,6 +37,11 @@ public class Player : Actor
         }
     }
 
+    protected override Projectile GenerateProjectilePrefab()
+    {
+        return PrefabGenerator.Instance.Projectile;
+    }
+
     protected override bool TakeDamage(Projectile otherProj)
     {
         if (!otherProj.IsPlayerProjectile)

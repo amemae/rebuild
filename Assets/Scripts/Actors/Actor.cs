@@ -9,7 +9,6 @@ public abstract class Actor : MonoBehaviour
     public float _speed;
     public int _hp;
     protected List<Projectile> _projs;
-    public Projectile _prefabProj;
     public int _numOfStartingProjs = 0;
 
     protected void Awake()
@@ -17,27 +16,19 @@ public abstract class Actor : MonoBehaviour
         GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
         GetComponent<Collider2D>().isTrigger = true;
 
-
         InitProjs();
     }
 
     protected virtual void InitProjs()
-    {
+    {    
         if (_numOfStartingProjs != 0)
         {
             _projs = new List<Projectile>();
             for (int p = 0; p < _numOfStartingProjs; ++p)
             {
-                _projs.Add(Instantiate(_prefabProj, GameManager.Instance.InstantiatePosition, Quaternion.identity));
+                _projs.Add(GenerateProjectilePrefab());
             }
         }
-    }
-
-    protected virtual Projectile NewProj()
-    {
-        Projectile newProj = Instantiate(_prefabProj, GameManager.Instance.InstantiatePosition, Quaternion.identity);
-        _projs.Add(newProj);
-        return newProj;
     }
 
     //Find an inactive projectile and move it to the actor's position before firing it
@@ -46,7 +37,7 @@ public abstract class Actor : MonoBehaviour
         Projectile inactiveProj = _projs.Where(p => !p.IsActive).FirstOrDefault();
         if (inactiveProj == null)
         {
-            inactiveProj = Instantiate(_prefabProj, GameManager.Instance.InstantiatePosition, Quaternion.identity);
+            inactiveProj = GenerateProjectilePrefab();
             _projs.Add(inactiveProj);
         }
 
@@ -70,6 +61,8 @@ public abstract class Actor : MonoBehaviour
         }
     }
 
+    //Defer the type of the projectile to subclasses
+    protected abstract Projectile GenerateProjectilePrefab();
     protected abstract bool TakeDamage(Projectile otherProj);
 
     protected virtual void DestroyActor()

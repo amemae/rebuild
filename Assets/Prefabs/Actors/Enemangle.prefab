@@ -125,8 +125,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 5
   _hp: 5
-  _prefabProj: {fileID: 4928855153296764857, guid: 49aa526f110f17747abea5f04a4ba183, type: 3}
   _numOfStartingProjs: 5
+  _shotsPerSecond: 1
 --- !u!50 &5441871680028049088
 Rigidbody2D:
   serializedVersion: 4
