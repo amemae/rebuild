@@ -24,6 +24,7 @@ public abstract class Projectile : MonoBehaviour
     {
         get { return false; }
     }
+
     private void Awake()
     {
         _collider = GetComponent<Collider2D>();
@@ -40,8 +41,9 @@ public abstract class Projectile : MonoBehaviour
         }
     }
 
-    public virtual void Activate()
+    public virtual void Activate(Vector2 targetPos)
     {
+        _targetPos = targetPos;
         _isActive = true;
     }
 

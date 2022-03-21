@@ -50,6 +50,15 @@ public class Player : Actor
         }
         return false;
     }
+    protected override Vector2 TargetPosition()
+    {
+        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        //Find the slope of the line between player and mouse position than scale the line so it continues past cursor
+        Vector2 targetPos;
+        targetPos.x = (mousePos.x - transform.position.x) * 100;
+        targetPos.y = (mousePos.y - transform.position.y) * 100;
+        return targetPos;
+    }
 
     protected override void DestroyActor()
     {

@@ -42,7 +42,7 @@ public abstract class Actor : MonoBehaviour
         }
 
         inactiveProj.transform.position = new Vector2(transform.position.x, transform.position.y);
-        inactiveProj.Activate();
+        inactiveProj.Activate(TargetPosition());
     }
 
     protected virtual void OnTriggerEnter2D(Collider2D other)
@@ -64,7 +64,7 @@ public abstract class Actor : MonoBehaviour
     //Defer the type of the projectile to subclasses
     protected abstract Projectile GenerateProjectilePrefab();
     protected abstract bool TakeDamage(Projectile otherProj);
-
+    protected abstract Vector2 TargetPosition();
     protected virtual void DestroyActor()
     {
         Destroy(gameObject);
