@@ -47,9 +47,4 @@ public abstract class Projectile : MonoBehaviour
         _isActive = false;
         transform.position = GameManager.Instance.InstantiatePosition;
     }
-
-    protected void OnBecameInvisible()
-    {
-        Deactivate();
-    }
 }
