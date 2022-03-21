@@ -39,7 +39,7 @@ public class Player : Actor
 
     protected override Projectile GenerateProjectilePrefab()
     {
-        return PrefabGenerator.Instance.Projectile;
+        return PrefabGenerator.Instance.PlayerProjectile;
     }
 
     protected override bool TakeDamage(Projectile otherProj)

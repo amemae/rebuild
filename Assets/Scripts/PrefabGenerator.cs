@@ -10,7 +10,7 @@ public class PrefabGenerator : MonoBehaviour
     public Player _player;
     public Enemangle _enemangle;
     /************* Projectiles ******************/
-    public Projectile _projectile;
+    public PlayerProjectile _playerProjectile;
     public EnemyProjectile _enemyProjectile;
 
     public Player Player
@@ -23,9 +23,9 @@ public class PrefabGenerator : MonoBehaviour
         get { return Instantiate(_enemangle, GameManager.Instance.InstantiatePosition, Quaternion.identity); }
     }
 
-    public Projectile Projectile
+    public Projectile PlayerProjectile
     {
-        get { return Instantiate(_projectile, GameManager.Instance.InstantiatePosition, Quaternion.identity); }
+        get { return Instantiate(_playerProjectile, GameManager.Instance.InstantiatePosition, Quaternion.identity); }
     }
 
     public EnemyProjectile EnemyProjectile
