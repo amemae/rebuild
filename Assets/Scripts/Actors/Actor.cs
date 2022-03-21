@@ -54,7 +54,7 @@ public abstract class Actor : MonoBehaviour
     protected virtual void OnTriggerEnter2D(Collider2D other)
     {
         Projectile otherProj = other.GetComponent<Projectile>();
-        if (TakeDamage(otherProj))
+        if (otherProj && TakeDamage(otherProj))
         {
             _hp -= otherProj.Damage;
 
