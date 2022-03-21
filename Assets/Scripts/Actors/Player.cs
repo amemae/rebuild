@@ -59,9 +59,4 @@ public class Player : Actor
         targetPos.y = (mousePos.y - transform.position.y) * 100;
         return targetPos;
     }
-
-    protected override void DestroyActor()
-    {
-        GameManager.Instance.TriggerLoss();
-    }
 }

@@ -52,6 +52,4 @@ public class GameManager : MonoBehaviour
         Enemangle enemangle = PrefabGenerator.Instance.Enemangle;
         enemangle.transform.position = new Vector2(0, 2);
     }
-    public void TriggerLoss()
-    {}
 }

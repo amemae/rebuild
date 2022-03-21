@@ -13,7 +13,10 @@ public abstract class Enemy : Actor
         if (_shotClock >= _shotsPerSecond * 50)
         {
             _shotClock = 0;
-            ShootProjectile();
+            if (GameManager.Instance.Player)
+            {
+                ShootProjectile();
+            }
         }
     }
 
