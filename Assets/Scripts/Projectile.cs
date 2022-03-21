@@ -32,6 +32,11 @@ public abstract class Projectile : MonoBehaviour
         GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
     }
 
+    private void Update()
+    {
+        transform.position = Vector2.MoveTowards(transform.position, _targetPos, _speed * Time.deltaTime);
+    }
+
     public virtual void Activate()
     {
         _isActive = true;
