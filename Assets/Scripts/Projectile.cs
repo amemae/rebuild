@@ -34,7 +34,10 @@ public abstract class Projectile : MonoBehaviour
 
     private void Update()
     {
-        transform.position = Vector2.MoveTowards(transform.position, _targetPos, _speed * Time.deltaTime);
+        if (_isActive)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, _targetPos, _speed * Time.deltaTime);
+        }
     }
 
     public virtual void Activate()
