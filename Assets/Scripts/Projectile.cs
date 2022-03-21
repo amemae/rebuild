@@ -8,7 +8,7 @@ public abstract class Projectile : MonoBehaviour
     public float _speed;
     public int _dmg;
     protected Vector2 _targetPos;
-    protected CircleCollider2D _collider;
+    protected Collider2D _collider;
 
     public bool IsActive
     {
@@ -26,9 +26,10 @@ public abstract class Projectile : MonoBehaviour
     }
     private void Awake()
     {
-        _collider = GetComponent<CircleCollider2D>();
+        _collider = GetComponent<Collider2D>();
+        _collider.isTrigger = true;
+
         GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
-        
     }
 
     void Update()

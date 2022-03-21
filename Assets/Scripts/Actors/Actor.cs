@@ -15,6 +15,9 @@ public abstract class Actor : MonoBehaviour
     protected void Awake()
     {
         GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+        GetComponent<Collider2D>().isTrigger = true;
+
+
         InitProjs();
     }
 

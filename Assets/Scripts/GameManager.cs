@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+
     private static GameManager _instance;
     public Vector2 _instantiatePosition = new Vector2(-1000, -1000);
     public Player _player;
@@ -35,4 +36,7 @@ public class GameManager : MonoBehaviour
     {
         _instance = this;
     }
+
+    public void TriggerLoss()
+    {}
 }

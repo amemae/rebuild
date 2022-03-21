@@ -45,4 +45,9 @@ public class Player : Actor
         }
         return false;
     }
+
+    protected override void DestroyActor()
+    {
+        GameManager.Instance.TriggerLoss();
+    }
 }
