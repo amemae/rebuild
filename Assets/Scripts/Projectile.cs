@@ -32,19 +32,6 @@ public abstract class Projectile : MonoBehaviour
         GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
     }
 
-    void Update()
-    {
-        if (_isActive)
-        {
-            transform.position = Vector2.MoveTowards(transform.position, _targetPos, _speed * Time.deltaTime);
-            if (transform.position.x == _targetPos.x && transform.position.y == _targetPos.y)
-            {
-                _isActive = false;
-            }
-        }
-
-    }
-
     public virtual void Activate()
     {
         _isActive = true;
@@ -54,5 +41,10 @@ public abstract class Projectile : MonoBehaviour
     {
         _isActive = false;
         transform.position = GameManager.Instance.InstantiatePosition;
+    }
+
+    protected void OnBecameInvisible()
+    {
+        Deactivate();
     }
 }
