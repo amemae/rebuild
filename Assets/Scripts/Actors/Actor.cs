@@ -19,6 +19,8 @@ public abstract class Actor : MonoBehaviour
         _rigidBody.bodyType = RigidbodyType2D.Dynamic;
         _rigidBody.constraints = RigidbodyConstraints2D.FreezeRotation;
 
+        GetComponent<SpriteRenderer>().sortingLayerName = SortingLayerName();
+
         InitProjs();
     }
 
@@ -77,6 +79,11 @@ public abstract class Actor : MonoBehaviour
     protected virtual void DestroyActor()
     {
         Destroy(gameObject);
+    }
+
+    protected virtual string SortingLayerName()
+    {
+        return "Actor";
     }
 
     //Defer the type of the projectile to subclasses

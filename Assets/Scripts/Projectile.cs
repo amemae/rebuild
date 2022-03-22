@@ -31,6 +31,7 @@ public abstract class Projectile : MonoBehaviour
         _collider.isTrigger = true;
 
         GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+        GetComponent<SpriteRenderer>().sortingLayerName = SortingLayerName();
     }
 
     private void Update()
@@ -51,5 +52,10 @@ public abstract class Projectile : MonoBehaviour
     {
         _isActive = false;
         transform.position = GameManager.Instance.InstantiatePosition;
+    }
+
+    protected virtual string SortingLayerName()
+    {
+        return "Projectile";
     }
 }
