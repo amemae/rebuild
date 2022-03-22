@@ -10,7 +10,6 @@ public abstract class Actor : MonoBehaviour
     public int _hp;
     protected List<Projectile> _projs;
     public int _numOfStartingProjs = 0;
-    protected bool _canMove = true;
     protected Rigidbody2D _rigidBody;
 
     protected void Awake()
