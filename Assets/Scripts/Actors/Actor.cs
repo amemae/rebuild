@@ -17,7 +17,7 @@ public abstract class Actor : MonoBehaviour
     {
         _rigidBody = GetComponent<Rigidbody2D>();
         _rigidBody.bodyType = RigidbodyType2D.Dynamic;
-        GetComponent<Collider2D>().isTrigger = true;
+        _rigidBody.constraints = RigidbodyConstraints2D.FreezeRotation;
 
         InitProjs();
     }
@@ -77,11 +77,6 @@ public abstract class Actor : MonoBehaviour
     protected virtual void DestroyActor()
     {
         Destroy(gameObject);
-    }
-
-    public void PreventMove()
-    {
-        _canMove = false;
     }
 
     //Defer the type of the projectile to subclasses

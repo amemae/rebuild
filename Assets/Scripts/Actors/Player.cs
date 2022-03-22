@@ -32,8 +32,13 @@ public class Player : Actor
     protected override void Move()
     {
         Vector2 velocity = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+        if (velocity != Vector2.zero)
+        {
+            Debug.Log(velocity);
+        }
         velocity *= _speed;
         _rigidBody.velocity = velocity;
+
     }
 
     protected override void Attack()
