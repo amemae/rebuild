@@ -22,16 +22,8 @@ public abstract class Actor : MonoBehaviour
 
     protected virtual void Update()
     {
-       if (_canMove)
-        {
-            TryMove();
-            _canMove = true;
-        }
-    }
-
-    protected virtual void FixedUpdate()
-    {
-        TryAttack();
+        Move();
+        Attack();
     }
 
     protected virtual void InitProjs()
@@ -90,6 +82,6 @@ public abstract class Actor : MonoBehaviour
     protected abstract Projectile GenerateProjectilePrefab();
     protected abstract bool TakeDamage(Projectile otherProj);
     protected abstract Vector2 TargetPosition();
-    protected abstract void TryMove();
-    protected abstract void TryAttack();
+    protected abstract void Move();
+    protected abstract void Attack();
 }

@@ -29,7 +29,7 @@ public class Player : Actor
         return targetPos;
     }
 
-    protected override void TryMove()
+    protected override void Move()
     {
         _oldPos = transform.position;
         if (Input.GetAxisRaw("Horizontal") < 0)
@@ -54,7 +54,7 @@ public class Player : Actor
 
     }
 
-    protected override void TryAttack()
+    protected override void Attack()
     {
         if (Input.GetMouseButtonDown(0))
         {

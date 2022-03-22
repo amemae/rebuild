@@ -15,7 +15,7 @@ public abstract class Enemy : Actor
         }
         return false;
     }
-    protected override void TryAttack()
+    protected override void Attack()
     {
         float currTime = Time.time;
         if (currTime >= _prevShotTime + _secondsPerShot)

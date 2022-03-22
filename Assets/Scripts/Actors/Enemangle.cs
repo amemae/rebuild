@@ -17,7 +17,7 @@ public class Enemangle : Enemy
         return targetPos;
     }
 
-    protected override void TryMove()
+    protected override void Move()
     {
         //Doesn't move
     }
