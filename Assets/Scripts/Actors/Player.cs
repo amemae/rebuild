@@ -41,11 +41,12 @@ public class Player : Actor
 
     }
 
-    protected override void Attack()
+    protected override bool TryingToAttack()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            ShootProjectile();
+            return true;
         }
+        return false;
     }
 }

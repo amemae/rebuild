@@ -11,6 +11,8 @@ public abstract class Actor : MonoBehaviour
     protected List<Projectile> _projs;
     public int _numOfStartingProjs = 0;
     protected Rigidbody2D _rigidBody;
+    public float _secondsPerShot;
+    protected bool _canFire = true;
 
     protected void Awake()
     {
@@ -25,7 +27,8 @@ public abstract class Actor : MonoBehaviour
 
     protected virtual void Update()
     {
-        Attack();
+        if (_canFire && TryingToAttack())
+            StartCoroutine(Attack());
     }
 
     protected virtual void FixedUpdate()
@@ -75,6 +78,14 @@ public abstract class Actor : MonoBehaviour
         }
     }
 
+    protected virtual IEnumerator Attack()
+    {
+        _canFire = false;
+        ShootProjectile();
+        yield return new WaitForSeconds(_secondsPerShot);
+        _canFire = true;
+    }
+
     protected virtual void DestroyActor()
     {
         Destroy(gameObject);
@@ -90,5 +101,5 @@ public abstract class Actor : MonoBehaviour
     protected abstract bool TakeDamage(Projectile otherProj);
     protected abstract Vector2 TargetPosition();
     protected abstract void Move();
-    protected abstract void Attack();
+    protected abstract bool TryingToAttack();
 }

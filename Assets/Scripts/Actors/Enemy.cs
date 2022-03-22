@@ -4,9 +4,6 @@ using UnityEngine;
 
 public abstract class Enemy : Actor
 {
-    public float _secondsPerShot;
-    protected float _prevShotTime = 0;
-
     protected override bool TakeDamage(Projectile otherProj)
     {
         if (otherProj.IsPlayerProjectile)
@@ -15,16 +12,12 @@ public abstract class Enemy : Actor
         }
         return false;
     }
-    protected override void Attack()
+    protected override bool TryingToAttack()
     {
-        float currTime = Time.time;
-        if (currTime >= _prevShotTime + _secondsPerShot)
+        if (GameManager.Instance.Player)
         {
-            if (GameManager.Instance.Player)
-            {
-                ShootProjectile();
-                _prevShotTime = currTime;
-            }
+            return true;
         }
+        return false;
     }
 }
