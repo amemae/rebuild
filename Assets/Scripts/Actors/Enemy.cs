@@ -4,8 +4,8 @@ using UnityEngine;
 
 public abstract class Enemy : Actor
 {
-    public float _shotsPerSecond;
-    protected float _shotClock = 0;
+    public float _secondsPerShot;
+    protected float _prevShotTime = 0;
 
     protected override bool TakeDamage(Projectile otherProj)
     {
@@ -17,14 +17,13 @@ public abstract class Enemy : Actor
     }
     protected override void TryAttack()
     {
-        ++_shotClock;
-        //50 represents the number of times FixedUpdate is called per second (with a framerate of at least 50)
-        if (_shotClock >= _shotsPerSecond * 50)
+        float currTime = Time.time;
+        if (currTime >= _prevShotTime + _secondsPerShot)
         {
-            _shotClock = 0;
             if (GameManager.Instance.Player)
             {
                 ShootProjectile();
+                _prevShotTime = currTime;
             }
         }
     }

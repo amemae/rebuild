@@ -126,7 +126,7 @@ MonoBehaviour:
   _speed: 5
   _hp: 5
   _numOfStartingProjs: 5
-  _shotsPerSecond: 1
+  _secondsPerShot: 1
 --- !u!50 &5441871680028049088
 Rigidbody2D:
   serializedVersion: 4
