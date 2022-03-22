@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
 
     public Vector2 _instantiatePosition = new Vector2(-1000, -1000);
     public Vector2 _playerInstantiationPosition = new Vector2(0, 0);
-    public Vector2 _playerHealthBarPosition = new Vector2(5, 0);
+    public Vector2 _playerHealthBarPosition;
 
     public Player _player;
 
