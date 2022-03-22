@@ -7,11 +7,11 @@ public class GameManager : MonoBehaviour
 
     private static GameManager _instance;
 
-    public Vector2 _instantiatePosition = new Vector2(-1000, -1000);
-    public Vector2 _playerInstantiationPosition = new Vector2(0, 0);
+    public Vector2 _instantiatePosition;
+    public Vector2 _playerInstantiationPosition;
     public Vector2 _playerHealthBarPosition;
 
-    public Player _player;
+    private Player _player;
 
     public Vector2 InstantiatePosition
     {
@@ -56,7 +56,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         _player = PrefabGenerator.Instance.Player;
-        _player.transform.position = new Vector2(0, 0);
+        _player.transform.position = _playerInstantiationPosition;
         Enemangle enemangle = PrefabGenerator.Instance.Enemangle;
         enemangle.transform.position = new Vector2(0, 4);
 

@@ -153,8 +153,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _instantiatePosition: {x: -1000, y: -1000}
-  _playerInstantiationPosition: {x: 0, y: 0}
-  _player: {fileID: 0}
+  _playerInstantiationPosition: {x: 0, y: -5}
+  _playerHealthBarPosition: {x: 0, y: -6.8}
 --- !u!4 &512124096
 Transform:
   m_ObjectHideFlags: 0
@@ -222,7 +222,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 10
+  orthographic size: 7.441417
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -287,6 +287,7 @@ MonoBehaviour:
   _enemyProjectile: {fileID: 4928855153296764857, guid: 49aa526f110f17747abea5f04a4ba183, type: 3}
   _blocker: {fileID: -3403742523877128802, guid: 8972a0dfc98be5f4d81e1be848307d17, type: 3}
   _redFloor: {fileID: 5379945520759652446, guid: 01cd37c639c457f4d9d4319310edbcdc, type: 3}
+  _healthBar: {fileID: 7741024005158696661, guid: dbf31d3e485c8ba4bb40ff392121c99c, type: 3}
 --- !u!4 &1839817013
 Transform:
   m_ObjectHideFlags: 0
