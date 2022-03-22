@@ -7,7 +7,7 @@ public abstract class Actor : MonoBehaviour
 {
     protected Vector2 _oldPos, _newPos;
     public float _speed;
-    public int _hp;
+    public int _hp, _maxHp;
     protected List<Projectile> _projs;
     public int _numOfStartingProjs = 0;
     protected Rigidbody2D _rigidBody;
@@ -16,12 +16,13 @@ public abstract class Actor : MonoBehaviour
 
     protected void Awake()
     {
+        _hp = _maxHp;
+
         _rigidBody = GetComponent<Rigidbody2D>();
         _rigidBody.bodyType = RigidbodyType2D.Dynamic;
         _rigidBody.constraints = RigidbodyConstraints2D.FreezeRotation;
 
         GetComponent<SpriteRenderer>().sortingLayerName = SortingLayerName();
-
         InitProjs();
     }
 
@@ -65,16 +66,9 @@ public abstract class Actor : MonoBehaviour
     protected virtual void OnTriggerEnter2D(Collider2D other)
     {
         Projectile otherProj = other.GetComponent<Projectile>();
-        if (otherProj && TakeDamage(otherProj))
+        if (otherProj && ShouldTakeDamage(otherProj))
         {
-            _hp -= otherProj.Damage;
-
-            if (_hp <= 0)
-            {
-                DestroyActor();
-            }
-
-            otherProj.Deactivate();
+            OnDamage(otherProj);
         }
     }
 
@@ -96,9 +90,21 @@ public abstract class Actor : MonoBehaviour
         return "Actor";
     }
 
+    protected virtual void OnDamage(Projectile otherProj)
+    {
+        _hp -= otherProj.Damage;
+
+        if (_hp <= 0)
+        {
+            DestroyActor();
+        }
+
+        otherProj.Deactivate();
+    }
+
     //Defer the type of the projectile to subclasses
     protected abstract Projectile GenerateProjectilePrefab();
-    protected abstract bool TakeDamage(Projectile otherProj);
+    protected abstract bool ShouldTakeDamage(Projectile otherProj);
     protected abstract Vector2 TargetPosition();
     protected abstract void Move();
     protected abstract bool TryingToAttack();

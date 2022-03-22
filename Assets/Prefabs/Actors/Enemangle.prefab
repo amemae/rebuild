@@ -125,6 +125,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 5
   _hp: 5
+  _maxHp: 5
   _numOfStartingProjs: 5
   _secondsPerShot: 1
 --- !u!50 &5441871680028049088

@@ -6,8 +6,11 @@ public class GameManager : MonoBehaviour
 {
 
     private static GameManager _instance;
+
     public Vector2 _instantiatePosition = new Vector2(-1000, -1000);
     public Vector2 _playerInstantiationPosition = new Vector2(0, 0);
+    public Vector2 _playerHealthBarPosition = new Vector2(5, 0);
+
     public Player _player;
 
     public Vector2 InstantiatePosition
@@ -18,6 +21,11 @@ public class GameManager : MonoBehaviour
     public Vector2 PlayerInstantiationPosition
     {
         get { return _playerInstantiationPosition; }
+    }
+
+    public Vector2 PlayerHealthBarPosition
+    {
+        get { return _playerHealthBarPosition; }
     }
 
     public Player Player
@@ -50,8 +58,9 @@ public class GameManager : MonoBehaviour
         _player = PrefabGenerator.Instance.Player;
         _player.transform.position = new Vector2(0, 0);
         Enemangle enemangle = PrefabGenerator.Instance.Enemangle;
-        enemangle.transform.position = new Vector2(0, 2);
+        enemangle.transform.position = new Vector2(0, 4);
 
         LevelBuilder.Instance.BuildLevel();
+        
     }
 }

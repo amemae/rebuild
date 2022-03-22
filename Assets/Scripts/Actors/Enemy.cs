@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class Enemy : Actor
 {
-    protected override bool TakeDamage(Projectile otherProj)
+    protected override bool ShouldTakeDamage(Projectile otherProj)
     {
         if (otherProj.IsPlayerProjectile)
         {

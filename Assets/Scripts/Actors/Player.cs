@@ -5,18 +5,32 @@ using System.Linq;
 
 public class Player : Actor
 {
+    protected HealthBar _healthBar;
+
+    protected void Start()
+    {
+        _healthBar = PrefabGenerator.Instance.PlaceHealthBar(GameManager.Instance.PlayerHealthBarPosition, _maxHp).GetComponent<HealthBar>();
+    }
+
     protected override Projectile GenerateProjectilePrefab()
     {
         return PrefabGenerator.Instance.PlayerProjectile;
     }
 
-    protected override bool TakeDamage(Projectile otherProj)
+    protected override bool ShouldTakeDamage(Projectile otherProj)
     {
         if (!otherProj.IsPlayerProjectile)
         {
             return true;
         }
         return false;
+    }
+    
+    protected override void OnDamage(Projectile otherProj)
+    {
+        base.OnDamage(otherProj);
+
+        _healthBar.UpdateHealth(_hp);
     }
 
     protected override Vector2 TargetPosition()

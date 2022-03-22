@@ -15,7 +15,8 @@ public class PrefabGenerator : MonoBehaviour
     /************* Environment ******************/
     public Blocker _blocker;
     public GameObject _redFloor;
-
+    /************* UI ******************/
+    public HealthBar _healthBar;
     public Player Player
     {
         get { return Instantiate(_player, GameManager.Instance.InstantiatePosition, Quaternion.identity); }
@@ -44,6 +45,13 @@ public class PrefabGenerator : MonoBehaviour
     public GameObject PlaceRedFloor(Vector2 pos)
     {
         return Instantiate(_redFloor, pos, Quaternion.identity);
+    }
+
+    public HealthBar PlaceHealthBar(Vector2 pos, int maxHp)
+    {
+        HealthBar healthBar = Instantiate(_healthBar, pos, Quaternion.identity);
+        healthBar.MaxHp= maxHp;
+        return healthBar;
     }
 
     public static PrefabGenerator Instance
