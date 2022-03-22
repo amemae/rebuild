@@ -31,27 +31,9 @@ public class Player : Actor
 
     protected override void Move()
     {
-        _oldPos = transform.position;
-        if (Input.GetAxisRaw("Horizontal") < 0)
-        {
-            transform.Translate(Vector2.left * _speed * Time.deltaTime);
-        }
-
-        if (Input.GetAxisRaw("Horizontal") > 0)
-        {
-            transform.Translate(Vector2.right * _speed * Time.deltaTime);
-        }
-
-        if (Input.GetAxisRaw("Vertical") > 0)
-        {
-            transform.Translate(Vector2.up * _speed * Time.deltaTime);
-        }
-
-        if (Input.GetAxisRaw("Vertical") < 0)
-        {
-            transform.Translate(Vector2.down * _speed * Time.deltaTime);
-        }
-
+        Vector2 velocity = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+        velocity *= _speed;
+        _rigidBody.MovePosition(_rigidBody.position + velocity * Time.fixedDeltaTime);
     }
 
     protected override void Attack()

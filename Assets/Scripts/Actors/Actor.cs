@@ -11,10 +11,12 @@ public abstract class Actor : MonoBehaviour
     protected List<Projectile> _projs;
     public int _numOfStartingProjs = 0;
     protected bool _canMove = true;
+    protected Rigidbody2D _rigidBody;
 
     protected void Awake()
     {
-        GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+        _rigidBody = GetComponent<Rigidbody2D>();
+        _rigidBody.bodyType = RigidbodyType2D.Dynamic;
         GetComponent<Collider2D>().isTrigger = true;
 
         InitProjs();
@@ -22,8 +24,12 @@ public abstract class Actor : MonoBehaviour
 
     protected virtual void Update()
     {
-        Move();
         Attack();
+    }
+
+    protected virtual void FixedUpdate()
+    {
+        Move();
     }
 
     protected virtual void InitProjs()
