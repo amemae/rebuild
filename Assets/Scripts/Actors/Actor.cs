@@ -10,6 +10,7 @@ public abstract class Actor : MonoBehaviour
     public int _hp;
     protected List<Projectile> _projs;
     public int _numOfStartingProjs = 0;
+    protected bool _canMove = true;
 
     protected void Awake()
     {
@@ -17,6 +18,20 @@ public abstract class Actor : MonoBehaviour
         GetComponent<Collider2D>().isTrigger = true;
 
         InitProjs();
+    }
+
+    protected virtual void Update()
+    {
+       if (_canMove)
+        {
+            TryMove();
+            _canMove = true;
+        }
+    }
+
+    protected virtual void FixedUpdate()
+    {
+        TryAttack();
     }
 
     protected virtual void InitProjs()
@@ -61,12 +76,20 @@ public abstract class Actor : MonoBehaviour
         }
     }
 
-    //Defer the type of the projectile to subclasses
-    protected abstract Projectile GenerateProjectilePrefab();
-    protected abstract bool TakeDamage(Projectile otherProj);
-    protected abstract Vector2 TargetPosition();
     protected virtual void DestroyActor()
     {
         Destroy(gameObject);
     }
+
+    public void PreventMove()
+    {
+        _canMove = false;
+    }
+
+    //Defer the type of the projectile to subclasses
+    protected abstract Projectile GenerateProjectilePrefab();
+    protected abstract bool TakeDamage(Projectile otherProj);
+    protected abstract Vector2 TargetPosition();
+    protected abstract void TryMove();
+    protected abstract void TryAttack();
 }

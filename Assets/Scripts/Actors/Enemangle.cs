@@ -16,4 +16,9 @@ public class Enemangle : Enemy
         targetPos.y = (GameManager.Instance.Player.transform.position.y - transform.position.y) * 100;
         return targetPos;
     }
+
+    protected override void TryMove()
+    {
+        //Doesn't move
+    }
 }
