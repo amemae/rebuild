@@ -33,7 +33,7 @@ public class Player : Actor
     {
         Vector2 velocity = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         velocity *= _speed;
-        _rigidBody.MovePosition(_rigidBody.position + velocity * Time.fixedDeltaTime);
+        _rigidBody.velocity = velocity;
     }
 
     protected override void Attack()
