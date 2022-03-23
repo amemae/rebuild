@@ -283,8 +283,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _player: {fileID: 7399229546139816115, guid: 3688d31cf3482cf458d9b166936f948c, type: 3}
   _enemangle: {fileID: -3437072963908249441, guid: 1f1fbe794e4fd7f4bb0badb934946e9f, type: 3}
-  _playerProjectile: {fileID: 5229658751319772748, guid: e145e534d3a864246a227f0b524541bf, type: 3}
-  _enemyProjectile: {fileID: 4928855153296764857, guid: 49aa526f110f17747abea5f04a4ba183, type: 3}
+  _redCircleProj: {fileID: 5851805399750574973, guid: e145e534d3a864246a227f0b524541bf, type: 3}
+  _blueSquareProj: {fileID: -8467198712499853484, guid: 49aa526f110f17747abea5f04a4ba183, type: 3}
+  _blueChevronProj: {fileID: -4113863916416491062, guid: 106e648898ee05743a8b26d9596fb909, type: 3}
   _blocker: {fileID: -3403742523877128802, guid: 8972a0dfc98be5f4d81e1be848307d17, type: 3}
   _redFloor: {fileID: 5379945520759652446, guid: 01cd37c639c457f4d9d4319310edbcdc, type: 3}
   _healthBar: {fileID: 7741024005158696661, guid: dbf31d3e485c8ba4bb40ff392121c99c, type: 3}
