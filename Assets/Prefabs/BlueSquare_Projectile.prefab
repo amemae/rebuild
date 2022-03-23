@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 8105157389637256873}
   - component: {fileID: 5168081261498548100}
   - component: {fileID: -5058502500173677106}
-  - component: {fileID: 4928855153296764857}
+  - component: {fileID: -8467198712499853484}
   m_Layer: 0
-  m_Name: Enemangle_Projectile
+  m_Name: BlueSquare_Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -132,7 +132,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &4928855153296764857
+--- !u!114 &-8467198712499853484
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -141,7 +141,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4894078167843081961}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ddabd8d483cba7d4386084757ff0f5c0, type: 3}
+  m_Script: {fileID: 11500000, guid: 785e9a1d2f393534785084c4a8ea5497, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 5

@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Projectile : MonoBehaviour
+public class Projectile : MonoBehaviour
 {
     private bool _isActive = false;
     public float _speed;
     public int _dmg;
     protected Vector2 _targetPos;
     protected Collider2D _collider;
+    public bool _isPlayerProjectile = false;
 
     public bool IsActive
     {
@@ -20,9 +21,10 @@ public abstract class Projectile : MonoBehaviour
         get { return _dmg; }
     }
 
-    public virtual bool IsPlayerProjectile
+    public bool IsPlayerProjectile
     {
-        get { return false; }
+        get { return _isPlayerProjectile; }
+        set { _isPlayerProjectile = value; }
     }
 
     private void Awake()

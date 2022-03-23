@@ -10,8 +10,9 @@ public class PrefabGenerator : MonoBehaviour
     public Player _player;
     public Enemangle _enemangle;
     /************* Projectiles ******************/
-    public PlayerProjectile _playerProjectile;
-    public EnemyProjectile _enemyProjectile;
+    public Projectile _redCircleProj;
+    public Projectile _blueSquareProj;
+    public Projectile _blueChevronProj;
     /************* Environment ******************/
     public Blocker _blocker;
     public GameObject _redFloor;
@@ -27,14 +28,14 @@ public class PrefabGenerator : MonoBehaviour
         get { return Instantiate(_enemangle, GameManager.Instance.InstantiatePosition, Quaternion.identity); }
     }
 
-    public Projectile PlayerProjectile
+    public Projectile RedCircleProjectile
     {
-        get { return Instantiate(_playerProjectile, GameManager.Instance.InstantiatePosition, Quaternion.identity); }
+        get { return Instantiate(_redCircleProj, GameManager.Instance.InstantiatePosition, Quaternion.identity); }
     }
 
-    public EnemyProjectile EnemyProjectile
+    public Projectile BlueSquareProjectile
     {
-        get { return Instantiate(_enemyProjectile, GameManager.Instance.InstantiatePosition, Quaternion.identity); }
+        get { return Instantiate(_blueSquareProj, GameManager.Instance.InstantiatePosition, Quaternion.identity); }
     }
 
     public Blocker PlaceBlocker(Vector2 pos)

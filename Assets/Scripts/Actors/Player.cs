@@ -14,7 +14,9 @@ public class Player : Actor
 
     protected override Projectile GenerateProjectilePrefab()
     {
-        return PrefabGenerator.Instance.PlayerProjectile;
+        Projectile newProj = PrefabGenerator.Instance.RedCircleProjectile;
+        newProj.IsPlayerProjectile = true;
+        return newProj;
     }
 
     protected override bool ShouldTakeDamage(Projectile otherProj)
@@ -46,10 +48,6 @@ public class Player : Actor
     protected override void Move()
     {
         Vector2 velocity = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-        if (velocity != Vector2.zero)
-        {
-            Debug.Log(velocity);
-        }
         velocity *= _speed;
         _rigidBody.velocity = velocity;
 
