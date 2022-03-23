@@ -63,7 +63,7 @@ public class Player : Actor
     }
     protected override void Attack()
     {
-        _activeShotList = 0;
+        _activeShotType = 0;
         ShootProjectile();
     }
 
@@ -71,7 +71,7 @@ public class Player : Actor
     {
         if (Input.GetMouseButton(0))
         {
-            _activeShotList = 0;
+            _activeShotType = 0;
         }
     }
 

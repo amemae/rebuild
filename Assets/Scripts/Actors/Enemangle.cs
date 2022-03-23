@@ -14,7 +14,7 @@ public class Enemangle : Enemy
     {
         Projectile newProj = null;
 
-        switch (_activeShotList)
+        switch (_activeShotType)
         {
             case (int)ShotTypes.BLUESQUARE:
                 newProj = PrefabGenerator.Instance.BlueSquareProjectile;
@@ -44,8 +44,7 @@ public class Enemangle : Enemy
 
     protected override void Attack()
     {
-        ChooseShotType();
-        switch (_activeShotList)
+        switch (_activeShotType)
         {
             case (int)ShotTypes.BLUESQUARE:
                 ShootProjectile();
@@ -64,6 +63,6 @@ public class Enemangle : Enemy
 
     protected override void ChooseShotType()
     {
-        _activeShotList = Random.Range(0, 2);
+        _activeShotType = Random.Range(0, 2);
     }
 }
