@@ -25,4 +25,13 @@ public abstract class Enemy : Actor
     {
         return RigidbodyType2D.Kinematic;
     }
+
+    protected Vector2 TargetPlayer()
+    {
+        Vector2 targetPos;
+        targetPos.x = (GameManager.Instance.Player.transform.position.x - transform.position.x) * 100;
+        targetPos.y = (GameManager.Instance.Player.transform.position.y - transform.position.y) * 100;
+
+        return targetPos;
+    }
 }

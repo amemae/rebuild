@@ -29,14 +29,6 @@ public class Enemangle : Enemy
         return newProj;
     }
 
-    protected override Vector2 TargetPosition()
-    {
-        Vector2 targetPos;
-        targetPos.x = (GameManager.Instance.Player.transform.position.x - transform.position.x) * 100;
-        targetPos.y = (GameManager.Instance.Player.transform.position.y - transform.position.y) * 100;
-        return targetPos;
-    }
-
     protected override void Move()
     {
         //Doesn't move
@@ -44,15 +36,17 @@ public class Enemangle : Enemy
 
     protected override void Attack()
     {
+        Vector2 targetPos;
+
         switch (_activeShotType)
         {
             case (int)ShotTypes.BLUESQUARE:
-                ShootProjectile();
+                ShootProjectile(TargetPlayer());
                 break;
             case (int)ShotTypes.BLUECHEVRON:
                 for (int i = 0; i < 3; ++i)
                 {
-                    ShootProjectile();
+                    ShootProjectile(TargetPlayer());
                 }
                 break;
             default:

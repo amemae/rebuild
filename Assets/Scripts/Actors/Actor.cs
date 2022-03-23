@@ -61,7 +61,7 @@ public abstract class Actor : MonoBehaviour
     }
 
     //Find an inactive projectile and move it to the actor's position before firing it
-    protected virtual void ShootProjectile()
+    protected virtual void ShootProjectile(Vector2 target)
     {
         Projectile inactiveProj = _projs[_activeShotType].Where(p => !p.IsActive).FirstOrDefault();
         if (inactiveProj == null)
@@ -71,7 +71,7 @@ public abstract class Actor : MonoBehaviour
         }
 
         inactiveProj.transform.position = new Vector2(transform.position.x, transform.position.y);
-        inactiveProj.Activate(TargetPosition());
+        inactiveProj.Activate(target);
     }
 
     protected virtual void OnTriggerEnter2D(Collider2D other)
@@ -115,7 +115,6 @@ public abstract class Actor : MonoBehaviour
     //Defer the type of the projectile to subclasses
     protected abstract Projectile GenerateProjectilePrefab();
     protected abstract bool ShouldTakeDamage(Projectile otherProj);
-    protected abstract Vector2 TargetPosition();
     protected abstract void Move();
     protected abstract void ChooseShotType();
     protected abstract bool WillAttack();
