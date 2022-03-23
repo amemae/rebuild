@@ -31,7 +31,6 @@ public class Player : Actor
     protected override void OnDamage(Projectile otherProj)
     {
         base.OnDamage(otherProj);
-
         _healthBar.UpdateHealth(_hp);
     }
 

@@ -38,6 +38,11 @@ public class PrefabGenerator : MonoBehaviour
         get { return Instantiate(_blueSquareProj, GameManager.Instance.InstantiatePosition, Quaternion.identity); }
     }
 
+    public Projectile BlueChevronProjectile
+    {
+        get { return Instantiate(_blueChevronProj, GameManager.Instance.InstantiatePosition, Quaternion.identity); }
+    }
+
     public Blocker PlaceBlocker(Vector2 pos)
     {
         return Instantiate(_blocker, pos, Quaternion.identity);

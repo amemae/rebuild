@@ -6,7 +6,7 @@ public class Enemangle : Enemy
 {
     protected override Projectile GenerateProjectilePrefab()
     {
-        return PrefabGenerator.Instance.BlueSquareProjectile;
+        return PrefabGenerator.Instance.BlueChevronProjectile;
     }
 
     protected override Vector2 TargetPosition()

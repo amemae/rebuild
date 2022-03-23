@@ -32,6 +32,7 @@ public class Projectile : MonoBehaviour
         _collider = GetComponent<Collider2D>();
         _collider.isTrigger = true;
 
+        gameObject.AddComponent<Rigidbody2D>();
         GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
         GetComponent<SpriteRenderer>().sortingLayerName = SortingLayerName();
     }
@@ -47,6 +48,10 @@ public class Projectile : MonoBehaviour
     public virtual void Activate(Vector2 targetPos)
     {
         _targetPos = targetPos;
+        Vector2 direction = _targetPos - (Vector2)transform.position;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        transform.rotation = rotation;
         _isActive = true;
     }
 
