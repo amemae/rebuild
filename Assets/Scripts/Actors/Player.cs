@@ -63,7 +63,6 @@ public class Player : Actor
     }
     protected override void Attack()
     {
-        _activeShotType = 0;
         ShootProjectile();
     }
 
