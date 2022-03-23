@@ -63,4 +63,9 @@ public class Player : Actor
         }
         return false;
     }
+
+    protected override RigidbodyType2D GetRigidBodyType()
+    {
+        return RigidbodyType2D.Dynamic;
+    }
 }

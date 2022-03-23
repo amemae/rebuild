@@ -20,4 +20,8 @@ public abstract class Enemy : Actor
         }
         return false;
     }
+    protected override RigidbodyType2D GetRigidBodyType()
+    {
+        return RigidbodyType2D.Kinematic;
+    }
 }

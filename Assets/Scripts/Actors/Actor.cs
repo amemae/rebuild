@@ -19,7 +19,7 @@ public abstract class Actor : MonoBehaviour
         _hp = _maxHp;
 
         _rigidBody = GetComponent<Rigidbody2D>();
-        _rigidBody.bodyType = RigidbodyType2D.Dynamic;
+        _rigidBody.bodyType = GetRigidBodyType();
         _rigidBody.constraints = RigidbodyConstraints2D.FreezeRotation;
 
         GetComponent<SpriteRenderer>().sortingLayerName = SortingLayerName();
@@ -108,4 +108,5 @@ public abstract class Actor : MonoBehaviour
     protected abstract Vector2 TargetPosition();
     protected abstract void Move();
     protected abstract bool TryingToAttack();
+    protected abstract RigidbodyType2D GetRigidBodyType();
 }
