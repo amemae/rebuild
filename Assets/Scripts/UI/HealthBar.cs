@@ -22,6 +22,12 @@ public class HealthBar : MonoBehaviour
     public void UpdateHealth(int currHp)
     {
         float scaleFactor = ((float)currHp / (float)_maxHp);
+
+        if (scaleFactor < 0)
+        {
+            scaleFactor = 0;
+        }
+
         _health.transform.localScale = new Vector2(_maxXScale * scaleFactor, _health.transform.localScale.y);
     }
 }
