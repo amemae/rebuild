@@ -67,6 +67,14 @@ public class Player : Actor
         ShootProjectile();
     }
 
+    protected override void ChooseShotType()
+    {
+        if (Input.GetMouseButton(0))
+        {
+            _activeShotList = 0;
+        }
+    }
+
     protected override RigidbodyType2D GetRigidBodyType()
     {
         return RigidbodyType2D.Dynamic;

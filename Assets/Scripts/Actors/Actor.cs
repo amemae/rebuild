@@ -32,6 +32,7 @@ public abstract class Actor : MonoBehaviour
     {
         if (_canFire && WillAttack())
         {
+            ChooseShotType();
             Attack();
             StartCoroutine(RateOfFire());
         }
@@ -116,6 +117,7 @@ public abstract class Actor : MonoBehaviour
     protected abstract bool ShouldTakeDamage(Projectile otherProj);
     protected abstract Vector2 TargetPosition();
     protected abstract void Move();
+    protected abstract void ChooseShotType();
     protected abstract bool WillAttack();
     protected abstract void Attack();
     protected abstract RigidbodyType2D GetRigidBodyType();

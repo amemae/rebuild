@@ -25,6 +25,4 @@ public abstract class Enemy : Actor
     {
         return RigidbodyType2D.Kinematic;
     }
-
-    protected abstract void ChooseShotType();
 }
