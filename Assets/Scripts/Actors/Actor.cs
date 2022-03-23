@@ -11,7 +11,7 @@ public abstract class Actor : MonoBehaviour
     protected List<List<Projectile>> _projs;
     public int _numOfStartingProjs = 0;
     public int _numProjTypes = 0;
-    protected int activeShotList = 0;
+    protected int _activeShotList = 0;
     protected Rigidbody2D _rigidBody;
     public float _secondsPerShot;
     protected bool _canFire = true;
@@ -44,26 +44,26 @@ public abstract class Actor : MonoBehaviour
         if (_numOfStartingProjs != 0)
         {
             _projs = new List<List<Projectile>>();
-            for (int o = 0; o < _numProjTypes; ++o)
+            for (; _activeShotList < _numProjTypes; ++_activeShotList)
             {
                 _projs.Add(new List<Projectile>());
                 for (int p = 0; p < _numOfStartingProjs; ++p)
                 {
-                    _projs[o].Add(GenerateProjectilePrefab());
+                    _projs[_activeShotList].Add(GenerateProjectilePrefab());
                 }
             }
-            
+            _activeShotList = 0;
         }
     }
 
     //Find an inactive projectile and move it to the actor's position before firing it
     protected virtual void ShootProjectile()
     {
-        Projectile inactiveProj = _projs[activeShotList].Where(p => !p.IsActive).FirstOrDefault();
+        Projectile inactiveProj = _projs[_activeShotList].Where(p => !p.IsActive).FirstOrDefault();
         if (inactiveProj == null)
         {
             inactiveProj = GenerateProjectilePrefab();
-            _projs[activeShotList].Add(inactiveProj);
+            _projs[_activeShotList].Add(inactiveProj);
         }
 
         inactiveProj.transform.position = new Vector2(transform.position.x, transform.position.y);

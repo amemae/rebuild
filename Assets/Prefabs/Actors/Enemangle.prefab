@@ -127,7 +127,7 @@ MonoBehaviour:
   _hp: 5
   _maxHp: 5
   _numOfStartingProjs: 5
-  _numProjTypes: 1
+  _numProjTypes: 2
   _secondsPerShot: 1
 --- !u!50 &5441871680028049088
 Rigidbody2D:

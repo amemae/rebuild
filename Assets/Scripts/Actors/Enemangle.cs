@@ -6,7 +6,21 @@ public class Enemangle : Enemy
 {
     protected override Projectile GenerateProjectilePrefab()
     {
-        return PrefabGenerator.Instance.BlueChevronProjectile;
+        Projectile newProj = null;
+
+        switch (_activeShotList)
+        {
+            case 0:
+                newProj = PrefabGenerator.Instance.BlueSquareProjectile;
+                break;
+            case 1:
+                newProj = PrefabGenerator.Instance.BlueChevronProjectile;
+                break;
+            default:
+                Debug.Log("Invalid shot type >.< how did you even get here?");
+                break;
+        }
+        return newProj;
     }
 
     protected override Vector2 TargetPosition()
