@@ -48,10 +48,13 @@ public class Projectile : MonoBehaviour
     public virtual void Activate(Vector2 targetPos)
     {
         _targetPos = targetPos;
+
+        //Point projectile towards target
         Vector2 direction = _targetPos - (Vector2)transform.position;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         transform.rotation = rotation;
+
         _isActive = true;
     }
 
