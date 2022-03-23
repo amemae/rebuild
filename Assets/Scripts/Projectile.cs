@@ -9,7 +9,7 @@ public class Projectile : MonoBehaviour
     public int _dmg;
     protected Vector2 _targetPos;
     protected Collider2D _collider;
-    public bool _isPlayerProjectile = false;
+    private bool _isPlayerProjectile = false;
 
     public bool IsActive
     {
