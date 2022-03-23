@@ -12,7 +12,7 @@ public abstract class Enemy : Actor
         }
         return false;
     }
-    protected override bool TryingToAttack()
+    protected override bool WillAttack()
     {
         if (GameManager.Instance.Player)
         {
@@ -20,8 +20,11 @@ public abstract class Enemy : Actor
         }
         return false;
     }
+
     protected override RigidbodyType2D GetRigidBodyType()
     {
         return RigidbodyType2D.Kinematic;
     }
+
+    protected abstract void ChooseShotType();
 }

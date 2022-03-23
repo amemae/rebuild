@@ -52,13 +52,19 @@ public class Player : Actor
 
     }
 
-    protected override bool TryingToAttack()
+    protected override bool WillAttack()
     {
         if (Input.GetMouseButtonDown(0))
         {
             return true;
         }
         return false;
+    
+    }
+    protected override void Attack()
+    {
+        _activeShotList = 0;
+        ShootProjectile();
     }
 
     protected override RigidbodyType2D GetRigidBodyType()

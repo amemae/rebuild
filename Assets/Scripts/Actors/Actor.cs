@@ -30,8 +30,11 @@ public abstract class Actor : MonoBehaviour
 
     protected virtual void Update()
     {
-        if (_canFire && TryingToAttack())
-            StartCoroutine(Attack());
+        if (_canFire && WillAttack())
+        {
+            Attack();
+            StartCoroutine(RateOfFire());
+        }
     }
 
     protected virtual void FixedUpdate()
@@ -79,10 +82,9 @@ public abstract class Actor : MonoBehaviour
         }
     }
 
-    protected virtual IEnumerator Attack()
+    protected IEnumerator RateOfFire()
     {
         _canFire = false;
-        ShootProjectile();
         yield return new WaitForSeconds(_secondsPerShot);
         _canFire = true;
     }
@@ -114,6 +116,7 @@ public abstract class Actor : MonoBehaviour
     protected abstract bool ShouldTakeDamage(Projectile otherProj);
     protected abstract Vector2 TargetPosition();
     protected abstract void Move();
-    protected abstract bool TryingToAttack();
+    protected abstract bool WillAttack();
+    protected abstract void Attack();
     protected abstract RigidbodyType2D GetRigidBodyType();
 }
