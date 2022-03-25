@@ -36,18 +36,17 @@ public class Enemangle : Enemy
 
     protected override void Attack()
     {
-        Vector2 targetPos;
-
+        Vector2 target = TargetPlayer();
         switch (_activeShotType)
         {
             case (int)ShotTypes.BLUESQUARE:
                 ShootProjectile(TargetPlayer());
                 break;
             case (int)ShotTypes.BLUECHEVRON:
-                for (int i = 0; i < 3; ++i)
-                {
-                    ShootProjectile(TargetPlayer());
-                }
+                float shotAngle = 25;
+                ShootProjectile(target);
+                ShootProjectile(MathFunctions.RotateVector(target, shotAngle));
+                ShootProjectile(MathFunctions.RotateVector(target, -shotAngle));
                 break;
             default:
                 Debug.Log("Invalid shot type >.< how did you even get here?");
