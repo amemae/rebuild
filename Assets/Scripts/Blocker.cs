@@ -15,5 +15,10 @@ public class Blocker : MonoBehaviour
         {
             proj.Deactivate();
         }
+
+        if (other.TryGetComponent(out Enemy enemy))
+        {
+            other.GetComponent<Enemy>().HitWall();
+        }
     }
 }

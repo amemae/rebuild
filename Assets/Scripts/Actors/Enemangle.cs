@@ -31,7 +31,12 @@ public class Enemangle : Enemy
 
     protected override void Move()
     {
-        //Doesn't move
+        if (_direction == Vector2.zero)
+        {
+            _direction = Vector2.left;
+        }
+
+        transform.Translate(_direction * _speed * Time.deltaTime);
     }
 
     protected override void Attack()
@@ -57,5 +62,10 @@ public class Enemangle : Enemy
     protected override void ChooseShotType()
     {
         _activeShotType = Random.Range(0, 2);
+    }
+
+    public override void HitWall()
+    {
+        _direction *= -1;
     }
 }

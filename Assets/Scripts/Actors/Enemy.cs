@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class Enemy : Actor
 {
+    protected Vector2 _direction;
     protected override bool ShouldTakeDamage(Projectile otherProj)
     {
         if (otherProj.IsPlayerProjectile)
@@ -34,4 +35,6 @@ public abstract class Enemy : Actor
 
         return targetPos;
     }
+
+    public abstract void HitWall();
 }
