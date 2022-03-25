@@ -30,6 +30,4 @@ public abstract class Enemy : Actor
 
         return targetPos;
     }
-
-    public abstract void HitWall();
 }

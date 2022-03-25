@@ -63,9 +63,4 @@ public class Enemangle : Enemy
     {
         _activeShotType = Random.Range(0, 2);
     }
-
-    public override void HitWall()
-    {
-        _direction *= -1;
-    }
 }
