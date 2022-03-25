@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class Enemy : Actor
 {
     protected Vector2 _direction;
+    protected bool _isMoving = false;
     protected override bool ShouldTakeDamage(Projectile otherProj)
     {
         if (otherProj.IsPlayerProjectile)

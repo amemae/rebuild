@@ -31,12 +31,16 @@ public class Enemangle : Enemy
 
     protected override void Move()
     {
-        if (_direction == Vector2.zero)
+        if (!_isMoving)
         {
+            _isMoving = true;
             _direction = Vector2.left;
         }
-
-        transform.Translate(_direction * _speed * Time.deltaTime);
+        else if (_rigidBody.velocity == Vector2.zero)
+        {
+            _direction *= -1;
+        }
+        _rigidBody.velocity = _direction * _speed;
     }
 
     protected override void Attack()
