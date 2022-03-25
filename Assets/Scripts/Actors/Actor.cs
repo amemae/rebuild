@@ -7,7 +7,8 @@ public abstract class Actor : MonoBehaviour
 {
     protected Vector2 _oldPos, _newPos;
     public float _speed;
-    public int _hp, _maxHp;
+    public int _maxHp;
+    protected int _hp;
     protected List<List<Projectile>> _projs;
     public int _numOfStartingProjs = 0;
     public int _numProjTypes = 0;
