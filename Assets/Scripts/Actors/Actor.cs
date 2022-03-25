@@ -5,7 +5,6 @@ using System.Linq;
 
 public abstract class Actor : MonoBehaviour
 {
-    protected Vector2 _oldPos, _newPos;
     public float _speed;
     public int _maxHp;
     protected int _hp;
