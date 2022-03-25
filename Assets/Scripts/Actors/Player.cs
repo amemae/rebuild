@@ -74,9 +74,4 @@ public class Player : Actor
             _activeShotType = 0;
         }
     }
-
-    protected override RigidbodyType2D GetRigidBodyType()
-    {
-        return RigidbodyType2D.Dynamic;
-    }
 }

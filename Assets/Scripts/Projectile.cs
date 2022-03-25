@@ -32,8 +32,7 @@ public class Projectile : MonoBehaviour
         _collider = GetComponent<Collider2D>();
         _collider.isTrigger = true;
 
-        gameObject.AddComponent<Rigidbody2D>();
-        GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+        ComponentSetter.Rigidbody2DSetup(this);
         GetComponent<SpriteRenderer>().sortingLayerName = SortingLayerName();
     }
 

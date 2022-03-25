@@ -6,7 +6,7 @@ public class Blocker : MonoBehaviour
 {
     private void Awake()
     {
-        GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+        ComponentSetter.Rigidbody2DSetup(this);
     }
 
     protected virtual void OnTriggerEnter2D(Collider2D other)
