@@ -20,14 +20,6 @@ public static class ComponentSetter
 
         return rb;
     }   
-    
-    public static Rigidbody2D Rigidbody2DSetup(Blocker blocker)
-    {
-        Rigidbody2D rb = blocker.gameObject.AddComponent<Rigidbody2D>();
-        rb.bodyType = RigidbodyType2D.Kinematic;
-
-        return rb;
-    }
 
     public static Rigidbody2D Rigidbody2DSetup(Projectile proj)
     {

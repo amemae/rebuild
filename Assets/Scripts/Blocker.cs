@@ -4,14 +4,10 @@ using UnityEngine;
 
 public class Blocker : MonoBehaviour
 {
-    private void Awake()
+    protected virtual void OnCollisionEnter2D(Collision2D other)
     {
-        ComponentSetter.Rigidbody2DSetup(this);
-    }
-
-    protected virtual void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.TryGetComponent(out Projectile proj))
+        Collider2D collider = other.collider;
+        if (collider.TryGetComponent(out Projectile proj))
         {
             proj.Deactivate();
         }
