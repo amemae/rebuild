@@ -67,4 +67,16 @@ public class Projectile : MonoBehaviour
     {
         return "Projectile";
     }
+
+    protected virtual void OnTriggerEnter2D(Collider2D other)
+    {
+        //Ignore trigger
+        if ((other.TryGetComponent(out Player player) && _isPlayerProjectile) ||
+            (other.TryGetComponent(out Enemy enemy) && !_isPlayerProjectile))
+        {
+            return;
+        }
+
+        Deactivate();
+    }
 }
