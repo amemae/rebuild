@@ -58,9 +58,6 @@ public class GameManager : MonoBehaviour
         _player = PrefabGenerator.Instance.Player;
         _player.transform.position = _playerInstantiationPosition;
         Enemangle enemangle = PrefabGenerator.Instance.Enemangle;
-        enemangle.transform.position = new Vector2(0, 4);
-
-        LevelBuilder.Instance.BuildLevel();
-        
+        enemangle.transform.position = new Vector2(0, 4); 
     }
 }
